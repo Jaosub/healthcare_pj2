@@ -90,3 +90,4 @@ export const createEncounter = async (
 
   return res.json();
 };
+

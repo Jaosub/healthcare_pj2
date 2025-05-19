@@ -1,6 +1,8 @@
 import express from 'express';
 import pool from '../db.js';
 import { v4 as uuidv4 } from 'uuid';
+import { syncEncounterToFirebase } from '../firebaseService.js';
+
 
 const router = express.Router();
 
@@ -76,11 +78,17 @@ router.post('/', async (req, res) => {
       [inserted.encounter_id]
     );
 
-    res.status(201).json(detailResult.rows[0]);
+    const encounterFull = detailResult.rows[0];
+
+    // ✅ Sync ไปยัง Firebase
+    await syncEncounterToFirebase(encounterFull);
+
+    res.status(201).json(encounterFull);
   } catch (err) {
     console.error('Error inserting encounter:', err);
     res.status(500).json({ error: 'Insert failed' });
   }
 });
+
 
 export default router;

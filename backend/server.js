@@ -5,6 +5,7 @@ import authRoutes from './routes/auth.js';
 import encountersRouter from './routes/encounters.js';
 
 
+
 const app = express();
 app.use(cors());
 app.use(express.json());

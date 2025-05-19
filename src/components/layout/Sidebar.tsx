@@ -1,6 +1,6 @@
 
 import { cn } from '@/lib/utils';
-import { Home, Search, FileText, Calendar, Settings, Menu } from 'lucide-react';
+import { Home, Search, FileText, Calendar, Settings, Menu, CloudDownload } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -28,16 +28,18 @@ const Sidebar = ({ className }: SidebarProps) => {
       href: '/dashboardpatient',
       icon: FileText,
     },
-    // {
-    //   name: 'ตารางนัด',
-    //   href: '/appointments',
-    //   icon: Calendar,
-    // },
-    // {
-    //   name: 'การตั้งค่า',
-    //   href: '/settings',
-    //   icon: Settings,
-    // },
+     {
+    name: 'ข้อมูลการรักษา',
+    href: '/encounters',
+    icon: Calendar, // หรือเปลี่ยนเป็น icon อื่น เช่น ClipboardList
+  },
+ {
+  name: "ดึงข้อมูลจาก Firebase",
+  href: "/encounters-firebase",
+  icon: CloudDownload, // หรืออื่น ๆ
+}
+,
+
   ];
   
   return (

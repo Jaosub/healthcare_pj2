@@ -1,4 +1,4 @@
-import express from 'express';
+import express from 'express'; 
 import pool from '../db.js';
 
 const router = express.Router();
@@ -52,17 +52,17 @@ router.put('/:id', async (req, res) => {
   const p = req.body
   await pool.query(
     `UPDATE patients SET 
-    first_name = $1,
-    last_name = $2,
-    birth_date = $3,
-    gender = $4,
-    phone = $5,
-    email = $6,
-    weight = $7,
-    height = $8,
-    blood_type = $9,
-    updated_at = NOW()
-  WHERE patient_id = $10`,
+      first_name = $1,
+      last_name = $2,
+      birth_date = $3,
+      gender = $4,
+      phone = $5,
+      email = $6,
+      weight = $7,
+      height = $8,
+      blood_type = $9,
+      updated_at = NOW()
+    WHERE patient_id = $10`,
     [
       p.first_name,
       p.last_name,
@@ -81,4 +81,3 @@ router.put('/:id', async (req, res) => {
   res.sendStatus(204);
 });
 export default router;
-
